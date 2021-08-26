@@ -22,13 +22,14 @@ runs:
       id: parse-value
       with:
         text: ${{ inputs.conditionals-with-values }}
-        regex: '^true\s*=>\s*(.*)?$'
+        regex: 'true\s*=>\s*(.*)?$'
     - run: echo ${{ steps.parse-value.outputs.group1 }}
+      shell: bash
        
     - name: Determine Message
       uses: haya14busa/action-cond@v1
       id: return-value
       with:
-        cond: ${{ steps.regex-match.outputs.match != '' }}
-        if_true: ${{ steps.regex-match.outputs.group1 }}
+        cond: ${{ steps.parse-value.outputs.match != '' }}
+        if_true: ${{ steps.parse-value.outputs.group1 }}
         if_false: ${{ inputs.default }}

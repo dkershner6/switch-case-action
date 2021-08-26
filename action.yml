@@ -1,0 +1,34 @@
+name: 'Switch Case Action'
+description: 'This is a composite action that checks the conditionals-and-values input for the correct one, and if none found, returns default (like a switch case)'
+
+inputs:
+  default:
+    description: "The value to be returned if no conditionals match"
+    required: true
+  conditionals-with-values:
+    description: "A newline delimited conditional array, split by an arrow (=>)"
+    required: true
+    
+outputs:
+  value:
+    description: "The value based on all other logic"
+    value: ${{ steps.version-changed.outputs.version-did-change }}
+
+runs:
+  using: "composite"
+  steps:
+    - name: Parse Conditionals and Value
+      uses: actions-ecosystem/action-regex-match@v2
+      id: parse-value
+      with:
+        text: ${{ inputs.conditionals-with-values }}
+        regex: '^true\s*=>\s*(.*)?$'
+    - run: echo ${{ steps.parse-value.outputs.group1 }}
+       
+    - name: Determine Message
+      uses: haya14busa/action-cond@v1
+      id: message
+      with:
+        cond: ${{ steps.regex-match.outputs.match != '' }}
+        if_true: ${{ steps.regex-match.outputs.group1 }}
+        if_false: ${{ inputs.default }}

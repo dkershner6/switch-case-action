@@ -24,6 +24,7 @@ runs:
         text: ${{ inputs.conditionals-with-values }}
         regex: '^true\s*=>\s*(.*)?$'
     - run: echo ${{ steps.parse-value.outputs.group1 }}
+      shell: bash
        
     - name: Determine Message
       uses: haya14busa/action-cond@v1

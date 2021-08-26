@@ -12,7 +12,7 @@ jobs:
       - uses: ./
         id: switch-case
         with:
-          default-value: "its the default"
+          default: "its the default"
           conditionals-with-values: |
             ${{ 'test' == 'not-test' }} => shouldnt be this one
             ${{ 'test' == 'test' }} => correctAnswer
@@ -20,7 +20,7 @@ jobs:
       - run: echo ${{ steps.switch-case.outputs.value }}
       
       # Optionally fail the workflow, should you choose
-      - name: Fail on no version updated
+      - name: Fail on non-correct answer
         if: ${{ steps.switch-case.outputs.value != 'correctAnswer' }}
         run: 'echo "No version change :/" && exit 1'
   

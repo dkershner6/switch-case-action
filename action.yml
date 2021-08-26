@@ -12,7 +12,7 @@ inputs:
 outputs:
   value:
     description: "The value based on all other logic"
-    value: ${{ steps.version-changed.outputs.version-did-change }}
+    value: ${{ steps.return-value.outputs.value }}
 
 runs:
   using: "composite"
@@ -28,7 +28,7 @@ runs:
        
     - name: Determine Message
       uses: haya14busa/action-cond@v1
-      id: message
+      id: return-value
       with:
         cond: ${{ steps.regex-match.outputs.match != '' }}
         if_true: ${{ steps.regex-match.outputs.group1 }}

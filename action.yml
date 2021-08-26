@@ -1,5 +1,9 @@
 name: 'Switch Case Action'
-description: 'This is a composite action that checks the conditionals-and-values input for the correct one, and if none found, returns default (like a switch case)'
+description: 'Checks the conditionals-and-values input for the correct one, and if none found, returns default (like a switch case)'
+
+branding:
+  icon: align-justify
+  color: orange
 
 inputs:
   default:

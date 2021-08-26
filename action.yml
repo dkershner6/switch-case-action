@@ -22,7 +22,7 @@ runs:
       id: parse-value
       with:
         text: ${{ inputs.conditionals-with-values }}
-        regex: '^true\s*=>\s*(.*)?$'
+        regex: 'true\s*=>\s*(.*)?$'
     - run: echo ${{ steps.parse-value.outputs.group1 }}
       shell: bash
        

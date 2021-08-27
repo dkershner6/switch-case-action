@@ -16,6 +16,7 @@ jobs:
           conditionals-with-values: |
             ${{ 'test' == 'not-test' }} => shouldnt be this one
             ${{ 'test' == 'test' }} => correctAnswer
+            true=>notThisOneEitherAlreadyReturned
           
       - run: echo ${{ steps.switch-case.outputs.value }}
       

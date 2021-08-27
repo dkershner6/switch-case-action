@@ -26,7 +26,7 @@ runs:
       id: parse-value
       with:
         text: ${{ inputs.conditionals-with-values }}
-        regex: 'true\s*=>\s*(.*)?$'
+        regex: 'true\s*=>\s*(.*?)?$'
     - run: echo match - ${{ steps.parse-value.outputs.match }} / value - ${{ steps.parse-value.outputs.group1 }}
       shell: bash
        

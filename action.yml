@@ -27,9 +27,7 @@ runs:
       with:
         text: ${{ inputs.conditionals-with-values }}
         regex: 'true\s*=>\s*(.*)?$'
-    - run: echo match - ${{ steps.parse-value.outputs.match }}
-      shell: bash
-    - run: echo value - ${{ steps.parse-value.outputs.group1 }}
+    - run: echo match - ${{ steps.parse-value.outputs.match }} / value - ${{ steps.parse-value.outputs.group1 }}
       shell: bash
        
     - name: Determine Message

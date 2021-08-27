@@ -30,11 +30,9 @@ runs:
         flags: m
     - run: "echo ------------- Regex Results ------------"
       shell: bash
-    - run: "echo match - ${{ steps.parse-value.outputs.match }}"
+    - run: "echo found - ${{ steps.parse-value.outputs.match != '' }}"
       shell: bash
-    - run: "echo value - ${{ steps.parse-value.outputs.group1 }}"
-      shell: bash
-    - run: "echo value2 - ${{ steps.parse-value.outputs.group2 }}"
+    - run: "echo group1 - ${{ steps.parse-value.outputs.group1 }}"
       shell: bash
        
     - name: Determine Message

@@ -26,7 +26,8 @@ runs:
       id: parse-value
       with:
         text: ${{ inputs.conditionals-with-values }}
-        regex: 'true\s*=>\s*(.*?)?$'
+        regex: 'true\s*=>\s*(.*)?$'
+        flags: m
     - run: "echo ------------- Regex Results ------------"
       shell: bash
     - run: "echo match - ${{ steps.parse-value.outputs.match }}"

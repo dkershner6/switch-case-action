@@ -16,14 +16,15 @@ jobs:
           conditionals-with-values: |
             ${{ 'test' == 'not-test' }} => shouldnt be this one
             ${{ 'test' == 'test' }} => correctAnswer
-            true=>notThisOneEitherAlreadyReturned
+            false=>notThisOneEither
+            false => nope
           
       - run: echo ${{ steps.switch-case.outputs.value }}
       
       # Optionally fail the workflow, should you choose
       - name: Fail on non-correct answer
         if: ${{ steps.switch-case.outputs.value != 'correctAnswer' }}
-        run: 'echo "No version change :/" && exit 1'
+        run: 'echo "Not Correct Answer :/" && exit 1'
         
   version-check:
     runs-on: ubuntu-latest

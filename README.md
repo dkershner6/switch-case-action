@@ -28,7 +28,7 @@ New lines are required between conditionals, what needs to occur for this switch
           default: "its the default"
           conditionals-with-values: |
             ${{ 'test' == 'not-test' }} => shouldnt be this one
-            ${{ 'test' == 'still-not-test' }} => correctAnswer
+            ${{ 'test' == 'still-not-test' }} => shouldnt be this one, too
           
       - run: echo ${{ steps.switch-case.outputs.value }} # its the default
 ```
